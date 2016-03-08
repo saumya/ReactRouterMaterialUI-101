@@ -6,6 +6,7 @@ var IndexLink = require('react-router').IndexLink;
 // react material-ui
 var AppBar = require('material-ui/lib/app-bar') ;
 var RaisedButton = require('material-ui/lib/raised-button') ;
+var FlatButton = require('material-ui/lib/flat-button');
 
 var AppControllerView = React.createClass({
   render: function(){
@@ -13,7 +14,9 @@ var AppControllerView = React.createClass({
     //
     return (
       <div className="row">
-        <AppBar title="My AppBar" />
+        <AppBar title="My AppBar"
+          iconElementRight={<FlatButton label="Done" onClick={that.onDone} />}
+          onTitleTouchTap={that.onTitleTouchTapHandle} />
           <RaisedButton label="My Button" primary={true} onClick={that.onHandleClick} />
         <nav className="u-full-width">
           <h2>The Required.</h2>
@@ -29,6 +32,13 @@ var AppControllerView = React.createClass({
         }
       </div>
     );
+  },
+  onTitleTouchTapHandle: function(){
+    // Not working ! Need to see why ?
+    console.log('onTitleTouchTapHandle');
+  },
+  onDone: function(){
+    console.log('onDone');
   },
   onHandleClick: function() {
     console.log('onHandleClick');
