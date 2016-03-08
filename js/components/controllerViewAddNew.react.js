@@ -1,75 +1,49 @@
 //
 var React = require('react');
 var Router = require('react-router').Router;
-
 var Link = require('react-router').Link;
 var browserHistory = require('react-router').browserHistory;
-// var hashHistory = require('react-router').hashHistory;
+//
+var Card = require('material-ui/lib/card/card');
+var CardActions = require('material-ui/lib/card/card-actions');
+var CardHeader = require('material-ui/lib/card/card-header');
+var CardMedia = require('material-ui/lib/card/card-media');
+var CardTitle = require('material-ui/lib/card/card-title');
+var CardText = require('material-ui/lib/card/card-text');
+var FlatButton = require('material-ui/lib/flat-button');
+
 
 var AddNew = React.createClass({
-  handleClick: function(){
-    console.log('handleClick');
-    //
-    //this.context.router.push('/see');
-    this.props.history.push('/see');
+  onSeeAll: function(){
+    console.log('onSeeAll');
+    this.context.router.push('/see');
   },
   contextTypes: {
     router: React.PropTypes.object.isRequired,
   },
   render: function(){
-    //console.log('AddNew : Lawnchair',Lawnchair);
     var that = this;
-
-    /*
-    router: React.PropTypes.object.isRequired,
-    router: React.PropTypes.func.isRequired,
-    */
-
-    //debugger;
-    console.log('render:context:',this.context);
-    //
-    var handleClick = function(e){
-      //e.nativeEvent.preventDefault();
-
-      //debugger;
-      console.log('Handleclick',e);
-      //that.props.history.push('/see');
-      /* props.history` and `context.history` are deprecated. Please use `context.router`
-       http://tiny.cc/router-contextchanges
-      */
-      console.log('that.context.router:',that.context.router);
-      that.context.router.push('/see');
-
-      //browserHistory.push('home.html#/see');
-      //browserHistory.replace('home.html#/see');
-      //browserHistory.push('/');
-
-      /*
-      //with a location descriptor object
-      router.push({
-        pathname: '/users/12',
-        query: { modal: true },
-        state: { fromDashboard: true }
-      });
-      */
-      //debugger;
-
-      //Router.push('/see');
-      return false;
-    };
+    // specifically written here, just to confirm this way of writting the handler
+    var onHome = function(){
+      that.context.router.push('/');
+    }
     //
     return (
-      <div className="twelve columns" router={this.context.router}>
-        <div>
-          <label>Note</label>
-    			<textarea className="u-full-width" placeholder="New note ..." id="newAddress"></textarea>
-    			<input className="button-primary" type="button" value="Save"></input>
-        </div>
-        <div>
+      <Card>
+        <CardTitle title="Add" subtitle="Add new items." />
+        <CardText>
+          Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+          Donec mattis pretium massa. Aliquam erat volutpat. Nulla facilisi.
+          Donec vulputate interdum sollicitudin. Nunc lacinia auctor quam sed pellentesque.
+          Aliquam dui mauris, mattis quis lacus id, pellentesque lobortis odio.
+        </CardText>
+        <CardActions>
+          <FlatButton label="Home" onClick={onHome} />
+          <FlatButton label="See All" onClick={that.onSeeAll} />
           <Link to='/see' className="button button-red"> See All Link </Link>
-          <button className="btn" onClick={handleClick}>See All Button</button>
-        </div>
-      </div>
+          <button className="btn" onClick={that.onSeeAll}>See All Button</button>
+        </CardActions>
+      </Card>
     );
   }
 });
