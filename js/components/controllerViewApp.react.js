@@ -3,28 +3,41 @@ var React = require('react');
 // react-router
 var Link = require('react-router').Link;
 var IndexLink = require('react-router').IndexLink;
+var browserHistory = require('react-router').browserHistory;
+
 // react material-ui
 var AppBar = require('material-ui/lib/app-bar') ;
 var RaisedButton = require('material-ui/lib/raised-button') ;
 var FlatButton = require('material-ui/lib/flat-button');
 
 var AppControllerView = React.createClass({
+  contextTypes: {
+    router: React.PropTypes.object.isRequired,
+  },
   render: function(){
     var that = this;
+    //
+    var onHomeClick = function(e){
+      console.log('onHome');
+      that.context.router.push('/');
+      return false;
+    }
     //
     return (
       <div className="row">
         <AppBar title="My AppBar"
           iconElementRight={<FlatButton label="Done" onClick={that.onDone} />}
           onTitleTouchTap={that.onTitleTouchTapHandle} />
-          <RaisedButton label="My Button" primary={true} onClick={that.onHandleClick} />
+
         <nav className="u-full-width">
           <h2>The Required.</h2>
           <ul id="navlist">
             <li><Link to='/see' className="button button-red"> See All </Link></li>
             <li><Link to='/add' className="button button-red"> Add New </Link></li>
             <li><IndexLink to="/">Home</IndexLink></li>
+            <li>{<RaisedButton label="Home" primary={true} onClick={onHomeClick} />}</li>
           </ul>
+          <RaisedButton label="Home" primary={true} onClick={onHomeClick} />
         </nav>
         {
           //renders the children
@@ -34,6 +47,7 @@ var AppControllerView = React.createClass({
     );
   },
   onTitleTouchTapHandle: function(){
+    debugger;
     // Not working ! Need to see why ?
     console.log('onTitleTouchTapHandle');
   },
