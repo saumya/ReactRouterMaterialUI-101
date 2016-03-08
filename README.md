@@ -4,8 +4,9 @@ Experimenting with [Material UI][2]
 
 Versions:
 --------------
- - material-ui : ^0.15.0-alpha.1
- - react : ^15.0.0-rc.1
+ - material-ui 	: ^0.15.0-alpha.1
+ - react-router : ^2.0.0
+ - react 				: ^15.0.0-rc.1
 
  - My Basic [React and React-router][1] project setup.
  - Installing [Material UI][3] with NPM ( npm install material-ui --save )
