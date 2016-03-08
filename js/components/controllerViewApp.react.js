@@ -22,6 +22,14 @@ var AppControllerView = React.createClass({
       that.context.router.push('/');
       return false;
     }
+    var onAddNewClick = function(){
+      console.log('onAddNewClick');
+      that.context.router.push('/add');
+    }
+    var onSeeAllClick = function(){
+      console.log('onSeeAllClick');
+      that.context.router.push('/see');
+    }
     //
     return (
       <div className="row">
@@ -30,14 +38,18 @@ var AppControllerView = React.createClass({
           onTitleTouchTap={that.onTitleTouchTapHandle} />
 
         <nav className="u-full-width">
-          <h2>The Required.</h2>
+          <h2>React React-Router MaterialUI , Lets play.</h2>
           <ul id="navlist">
             <li><Link to='/see' className="button button-red"> See All </Link></li>
             <li><Link to='/add' className="button button-red"> Add New </Link></li>
             <li><IndexLink to="/">Home</IndexLink></li>
-            <li>{<RaisedButton label="Home" primary={true} onClick={onHomeClick} />}</li>
+            <li>Empty on purpose</li>
+            <li>{<FlatButton label="Home" onClick={onHomeClick} />}</li>
+            <li>{<RaisedButton label="Add New" primary={true} onClick={onAddNewClick} />}</li>
+            <li>{<FlatButton label="See All" onClick={onSeeAllClick} />}</li>
+            <li>Empty on purpose</li>
           </ul>
-          <RaisedButton label="Home" primary={true} onClick={onHomeClick} />
+          <RaisedButton label="Home" primary={false} onClick={onHomeClick} />
         </nav>
         {
           //renders the children
