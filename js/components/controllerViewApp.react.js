@@ -1,13 +1,20 @@
 //
 var React = require('react');
+// react-router
 var Link = require('react-router').Link;
 var IndexLink = require('react-router').IndexLink;
+// react material-ui
+var AppBar = require('material-ui/lib/app-bar') ;
+var RaisedButton = require('material-ui/lib/raised-button') ;
 
 var AppControllerView = React.createClass({
   render: function(){
+    var that = this;
     //
     return (
       <div className="row">
+        <AppBar title="My AppBar" />
+          <RaisedButton label="My Button" primary={true} onClick={that.onHandleClick} />
         <nav className="u-full-width">
           <h2>The Required.</h2>
           <ul id="navlist">
@@ -22,6 +29,9 @@ var AppControllerView = React.createClass({
         }
       </div>
     );
+  },
+  onHandleClick: function() {
+    console.log('onHandleClick');
   }
 });
 module.exports = AppControllerView;
